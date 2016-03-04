@@ -66,7 +66,7 @@ public class MusicOrganizer
     {
         randomplay = new Random();
         int randomPlay = getNumberOfTracks();
-        int rindex = randomplay.nextInt();
+        int rindex = randomplay.nextInt(randomPlay);
         if(indexValid(index))
         {
             Track track = tracks.get(rindex);
