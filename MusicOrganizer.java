@@ -66,6 +66,22 @@ public class MusicOrganizer
     {
         randomplay = new Random();
         int randomPlay = getNumberOfTracks();
+        int rindex = randomplay.nextInt(9);
+        if(indexValid(index))
+        {
+            Track track = tracks.get(rindex);
+            player.startPlaying(track.getFilename());
+            System.out.println("Playing: " + track.getArtist() + " - " + track.getTitle());
+
+        }
+            
+    }
+   
+  
+    public void randomList(int index)
+    {  
+        randomplay = new Random();
+        int randomPlay = getNumberOfTracks();
         int rindex = randomplay.nextInt(randomPlay);
         if(indexValid(index))
         {
@@ -74,11 +90,24 @@ public class MusicOrganizer
             System.out.println("Playing: " + track.getArtist() + " - " + track.getTitle());
             tracks.remove(index);
             randomPlay--;
-        }
-            
-    }
+        }       
     
-    /**
+        if(randomPlay == 0)
+        {
+           System.out.println("End of Playlist");
+           ArrayList<Track> temTracks = reader.readTracks("audio", ".mp3");
+                   for(Track track : temTracks)
+                   {
+                       addTrack(track);
+                   }
+               randomPlay = 9; 
+        }
+        
+    }
+   
+   
+    
+   /**
      * Return the number of tracks in the collection.
      * @return The number of tracks in the collection.
      */

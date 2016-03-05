@@ -48,7 +48,8 @@ public class TrackReader
         });
         
         // Put all the matching files into the organizer.
-        for(File file : audioFiles) {
+        for(File file : audioFiles) 
+        {
             Track trackDetails = decodeDetails(file);
             tracks.add(trackDetails);
         }
